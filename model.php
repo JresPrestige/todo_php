@@ -29,4 +29,20 @@ class Model extends Koneksi
 
         return $rows;
     }
+
+    public function update($id)
+    {
+        $sql = "UPDATE datalist set status = 'selesai' where id_list = $id";
+        $query = mysqli_query($this->konek, $sql);
+
+        return $query;
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM datalist where id_list = $id";
+        $query = mysqli_query($this->konek, $sql);
+
+        return $query;
+    }
 }

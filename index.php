@@ -30,12 +30,22 @@ $tampil = $model->tampil("datalist");
             <li>
                 <table border="1" cellpadding="10" cellspacing="0">
                     <tr>
-                        <td><?= $d["keterangan"]; ?></td>
+                        <?php
+                        if ($d['status'] == 'belum selesai') {
+                        ?>
+                            <td><?= $d["keterangan"]; ?></td>
+                        <?php
+                        } else if ($d['status'] == 'selesai') {
+                        ?>
+                            <td class="coret"><del><?= $d["keterangan"]; ?></del></td>
+                        <?php
+                        }
+                        ?>
                         <td>
-                            <button type="submit">complete</button>
+                            <a href="update.php?id=<?= $d['id_list'] ?>">Complete</a>
                         </td>
                         <td>
-                            <button type="submit">hapus</button>
+                            <a href="hapus.php?id=<?= $d['id_list'] ?>">Hapus</a>
                         </td>
                     </tr>
                 </table>
